@@ -5,6 +5,8 @@ import { createStore } from 'redux'
 import todoApp from './todoListScreen/reducers'
 import App from './todoListScreen/components/App'
 import configureStore from './store/rootStore';
+import './index.css';
+
 
 let store = configureStore({});
 
