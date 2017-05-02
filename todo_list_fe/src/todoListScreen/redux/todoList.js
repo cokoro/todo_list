@@ -59,10 +59,7 @@ export const getTodoList = (data) => (dispatch, getState) => {
                     type: GET_SUCCESS,
                     payload: (action, state, res) => {
                         return res.json().then(data => {
-                            if (!!data && !!data.results) {
-                                const todoList = data.results;
-                                return todoList;
-                            }
+                            return data;
                         })
                     }
                 },
