@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'antd';
+import { Table, Checkbox } from 'antd';
 
 const transformTodoListData = (data = []) => {
     return data.map((ent, idx) => {
@@ -8,7 +8,7 @@ const transformTodoListData = (data = []) => {
             key: idx,
         }
     }).sort((a, b) => {
-        return b.id - a.id
+        return a.id - b.id
     })
 }
 
@@ -28,6 +28,12 @@ class TodoList extends Component {
                 title: '完成',
                 dataIndex: 'check',
                 key: 'check',
+                render: (text, record) => (
+                    <Checkbox checked={text} onChange={(e) => {
+                        e.stopPropagation();
+                        this.props.updateCheckStatus(record);
+                    }} />
+                ),
             }, {
                 title: '最后期限',
                 dataIndex: 'deadline',
