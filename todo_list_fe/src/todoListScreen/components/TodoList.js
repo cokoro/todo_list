@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Checkbox,Button } from 'antd';
+import { Table, Checkbox,Button, Input, InputNumber, DatePicker } from 'antd';
 
 const transformTodoListData = (data = []) => {
     return data.map((ent, idx) => {
@@ -30,6 +30,12 @@ class TodoList extends Component {
                 title: '内容',
                 dataIndex: 'content',
                 key: 'content',
+                render: (text, record) => (
+                    <Input defaultValue={text} onPressEnter={(e) => {
+                        e.stopPropagation();
+                        this.props.updateContent(record, e.target.value);
+                    }} />
+                ),
             }, {
                 title: '完成',
                 dataIndex: 'check',
@@ -45,6 +51,11 @@ class TodoList extends Component {
                 dataIndex: 'deadline',
                 key: 'deadline',
                 sorter: (a, b) => a.deadline.localeCompare(b.deadline),
+                //render: (text, record) => (
+                  //  <DatePicker defaultValue={text} onChange={(value) => {
+                        
+                  //  }} />
+                //),
                 //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort?v=control
                 //from table components:https://ant.design/components/table-cn/#components-table-demo-reset-filter
             }, {
@@ -52,6 +63,11 @@ class TodoList extends Component {
                 dataIndex: 'priority',
                 key: 'priority',
                 sorter: (a, b) => a.priority - b.priority,
+                render: (text, record) => (
+                    <InputNumber min={1} max={5} defaultValue={text} onChange={(value) => {
+                        this.props.updatepriority(record, value);
+                    }} />
+                ),
             },{
                 title: 'Delete',
                 key: 'delete',

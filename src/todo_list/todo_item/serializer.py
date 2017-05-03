@@ -9,7 +9,7 @@ class TodoItemSerializer(serializers.Serializer):
     content = serializers.CharField(required=False, allow_blank=True, max_length=1024)
     check = serializers.BooleanField(required=False, default=False)
     deadline = serializers.DateTimeField(required=False)
-    priority = serializers.IntegerField(required=False)
+    priority = serializers.IntegerField(required=False, allow_null=True)
 
     
     def create(self, validated_data):

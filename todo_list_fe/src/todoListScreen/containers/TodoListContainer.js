@@ -22,6 +22,15 @@ class TodoListContainer extends React.Component {
         this.updateStatus(record);
     }
 
+    updateContent = (record, text) => {
+        record.content = text;
+        this.updateStatus(record);
+    }
+    updatepriority= (record, text) => {
+        record.priority = text;
+        this.updateStatus(record);
+    }
+
     deleteStatus = (record) => {
         const { deleteTodoItemStatus } = this.props;
         deleteTodoItemStatus(record, this.props.getTodoList);
@@ -42,6 +51,8 @@ class TodoListContainer extends React.Component {
                         todoList={todoList.entry}
                         updateCheckStatus={this.updateCheckStatus}
                         deleteCheckStatus={this.deleteCheckStatus}
+                        updateContent={this.updateContent}
+                        updatepriority={this.updatepriority}
                     />
                 </Spin>
             </div>
