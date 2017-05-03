@@ -37,7 +37,7 @@ class TodoListContainer extends React.Component {
         } = this.props;
         return (
             <div>
-                <Spin spinning={todoList.loading} tip='loading...' size='large'>>
+                <Spin spinning={todoList.loading} tip='loading...' size='large'>
                     <TodoList
                         todoList={todoList.entry}
                         updateCheckStatus={this.updateCheckStatus}
