@@ -22,17 +22,24 @@ const TodoCreateForm = Form.create()(
                             <Input />
                         )}
                     </FormItem>
-                    <FormItem label="content">
+                    <FormItem label="Content">
                         {getFieldDecorator('content')(<Input type="textarea" />)}
                     </FormItem>
-                    Is finish? <Checkbox>{getFieldDecorator('check')}</Checkbox>
-                    <DatePicker
-                        showTime
-                        format="YYYY-MM-DD HH:mm:ss"
-                        placeholder="Select Time"
-                    >{getFieldDecorator('deadline')}</DatePicker>
-                     Priority 
-                    <InputNumber min={1} max={5}>{getFieldDecorator('priority')}</InputNumber>
+                    <FormItem label="Is finish?">
+                        {getFieldDecorator('check')(<Checkbox />)}
+                    </FormItem>
+                    <FormItem>
+                        {getFieldDecorator('deadline')(
+                            <DatePicker
+                                showTime
+                                format="YYYY-MM-DD HH:mm:ss"
+                                placeholder="Select Time"
+                            ></DatePicker>
+                        )}
+                    </FormItem>
+                    <FormItem label="priority">
+                        {getFieldDecorator('priority')(<InputNumber min={1} max={5} />)}
+                    </FormItem>
                 </Form>
             </Modal>
         );
