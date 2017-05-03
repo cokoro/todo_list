@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Button, Form, Input, Checkbox, DatePicker, InputNumber} from 'antd';
 
 const FormItem = Form.Item;
 
@@ -22,9 +22,17 @@ const TodoCreateForm = Form.create()(
                             <Input />
                         )}
                     </FormItem>
-                    <FormItem label="Description">
-                        {getFieldDecorator('description')(<Input type="textarea" />)}
+                    <FormItem label="content">
+                        {getFieldDecorator('content')(<Input type="textarea" />)}
                     </FormItem>
+                    Is finish? <Checkbox>{getFieldDecorator('check')}</Checkbox>
+                    <DatePicker
+                        showTime
+                        format="YYYY-MM-DD HH:mm:ss"
+                        placeholder="Select Time"
+                    >{getFieldDecorator('deadline')}</DatePicker>
+                     Priority 
+                    <InputNumber min={1} max={5}>{getFieldDecorator('priority')}</InputNumber>
                 </Form>
             </Modal>
         );

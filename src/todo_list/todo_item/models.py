@@ -7,6 +7,7 @@ class TodoItem(models.Model):
     content = models.CharField(max_length=1024)
     check = models.BooleanField(default=False)
     deadline = models.DateTimeField(null=True)
+    priority = models.IntegerField(null=True)
 
     def __unicode__(self):
         return "<todo_item %d>" % self.id
