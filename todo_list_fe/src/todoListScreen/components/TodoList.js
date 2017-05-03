@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Checkbox } from 'antd';
+import { Table, Checkbox,Button } from 'antd';
 
 const transformTodoListData = (data = []) => {
     return data.map((ent, idx) => {
@@ -25,6 +25,10 @@ class TodoList extends Component {
                 dataIndex: 'title',
                 key: 'title',
             }, {
+                title: '内容',
+                dataIndex: 'content',
+                key: 'content',
+            }, {
                 title: '完成',
                 dataIndex: 'check',
                 key: 'check',
@@ -38,6 +42,16 @@ class TodoList extends Component {
                 title: '最后期限',
                 dataIndex: 'deadline',
                 key: 'deadline',
+            },
+            {
+                title: 'Delete',
+                key: 'delete',
+                render:(text, record) => (
+                    <Button type="danger" onClick={(e) => {
+                        e.stopPropagation();
+                        this.props.deleteCheckStatus(record);
+                }} >Delete</Button>
+                ),
             },
         ]
     }

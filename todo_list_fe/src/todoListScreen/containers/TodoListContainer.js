@@ -7,6 +7,7 @@ import { Spin } from 'antd';
 import TodoList from '../components/TodoList';
 import { getTodoList } from '../redux/todoList';
 import { updateTodoItemStatus } from '../redux/updateTodoItem';
+import { deleteTodoItemStatus } from '../redux/deleteTodoItem';
 
 class TodoListContainer extends React.Component {
     componentDidMount() {
@@ -20,6 +21,16 @@ class TodoListContainer extends React.Component {
         record.check = !record.check;
         this.updateStatus(record);
     }
+
+    deleteStatus = (record) => {
+        const { deleteTodoItemStatus } = this.props;
+        deleteTodoItemStatus(record, this.props.getTodoList);
+    }
+    deleteCheckStatus = (record) => {
+        
+        this.deleteStatus(record);
+    }
+
     render() {
         const {
             todoList
@@ -30,6 +41,7 @@ class TodoListContainer extends React.Component {
                     <TodoList
                         todoList={todoList.entry}
                         updateCheckStatus={this.updateCheckStatus}
+                        deleteCheckStatus={this.deleteCheckStatus}
                     />
                 </Spin>
             </div>
@@ -47,6 +59,7 @@ const mapDispatchToProps = (dispatch) => {
     return bindActionCreators({
         getTodoList,
         updateTodoItemStatus,
+        deleteTodoItemStatus,
     }, dispatch)
 }
 

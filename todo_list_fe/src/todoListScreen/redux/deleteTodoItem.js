@@ -2,16 +2,16 @@ import { CALL_API } from 'redux-api-middleware';
 
 import api from '../constants/api';
 //types
-export const PUT_REQUEST = 'updateTodoItem/REQUEST';
-export const PUT_SUCCESS = 'updateTodoItem/SUCCESS';
-export const PUT_FAIL = 'updateTodoItem/FAIL';
+export const PUT_REQUEST = 'deleteTodoItem/REQUEST';
+export const PUT_SUCCESS = 'deleteTodoItem/SUCCESS';
+export const PUT_FAIL = 'deleteTodoItem/FAIL';
 
 //actions
-export const updateTodoItemStatus = (record, successCallback) => (dispatch) => {
+export const deleteTodoItemStatus = (record, successCallback) => (dispatch) => {
     dispatch({
         [CALL_API]: {//call_api: https://www.npmjs.com/package/redux-api-middleware
             endpoint: `${api.TodoList}` + record.id + '/',
-            method: 'PUT',
+            method: 'DELETE',
             credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
