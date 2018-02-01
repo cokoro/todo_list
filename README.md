@@ -1,6 +1,20 @@
 # todo_list
+## Usage
+### Django
+In the todo_list/src/todo_list
+``` python
+python manage.py runserver 127.0.0.1:9150
+```
+or
+``` python
+make dev
+```
+#### React
+In the todo_list/todo_list_fe
+``` python
+npm start
+```
 ## 已完成功能
-## 需要支持的功能：
 ### * 增加一个待办事项
 <img src="https://cl.ly/081H2d3c0i1u/Screen%20Recording%202017-05-03%20at%2009.42%20%E4%B8%8B%E5%8D%88.gif">
 </img>
