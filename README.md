@@ -12,6 +12,7 @@ make dev
 #### React
 In the todo_list/todo_list_fe
 ``` python
+npm install
 npm start
 ```
 ## 已完成功能
